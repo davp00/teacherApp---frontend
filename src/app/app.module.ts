@@ -22,6 +22,7 @@ import { TeacherGroupsComponent } from './teacher_modules/teacher-groups/teacher
 import { TeacherAssistanceComponent } from './teacher_modules/teacher-assistance/teacher-assistance.component';
 import { ClockComponent } from './teacher_modules/clock/clock.component';
 import { InfoTableComponent } from './teacher_modules/info-table/info-table.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { InfoTableComponent } from './teacher_modules/info-table/info-table.comp
     TeacherGroupsComponent,
     TeacherAssistanceComponent,
     ClockComponent,
-    InfoTableComponent
+    InfoTableComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

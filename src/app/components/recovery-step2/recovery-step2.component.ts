@@ -15,6 +15,7 @@ export class RecoveryStep2Component implements OnInit {
   private token: String;
   public form: FormGroup;
   public res: RequestInformation;
+  public validateToken: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,11 +35,25 @@ export class RecoveryStep2Component implements OnInit {
   ngOnInit() {
       this.userService.IfisAuth();
       this.token = this.route.snapshot.paramMap.get('token');
+
+      this.userService.ValidateRecoveryToken(this.token).subscribe(
+        (res) => {
+
+        },
+
+        (error) => {
+          this.res = new RequestInformation(error.status, error.error.message);
+          this.loading.Hide();
+          this.validateToken = false;
+        }
+      );
   }
 
 
   SendRequest(): void
   {
+
+
       this.res = undefined;
       this.loading.Show();
       let pass = this.form.value.pass1;
@@ -48,6 +63,7 @@ export class RecoveryStep2Component implements OnInit {
             this.res = new RequestInformation(200, res.message);
             this.form.reset();
             this.loading.Hide();
+            this.validateToken = false;
         },
         (error:any) =>
         {

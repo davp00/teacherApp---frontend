@@ -55,9 +55,21 @@ export class UserService {
       return this.http.post(this.APIUSERS+ '/recovery',{email});
   }
 
+
   public ChangePassword(token, pass)
   {
-      return this.http.put(this.APIUSERS+'/recovery',{pass}, {headers: UserService.RequestOptions(token)});
+      return this.http.put(this.APIUSERS+'/changepassword',{pass}, {headers: UserService.RequestOptions(token)});
+  }
+
+
+  public ValidateRecoveryToken(token)
+  {
+      return this.http.post(this.APIUSERS + '/recoveryToken',{}, {headers: UserService.RequestOptions(token)})
+  }
+
+  public ProfileInfo()
+  {
+      return this.http.get( this.APIUSERS , {headers: UserService.RequestOptions(this.getUser().getToken())})
   }
 
 
