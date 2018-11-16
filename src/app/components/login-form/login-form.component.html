@@ -1,0 +1,48 @@
+<form [formGroup]="form" (ngSubmit)="login()">
+    <div class="input-group" [class.has-success]="!form.controls.email.errors && form.controls.email.dirty">
+        <div class="input-group-prepend">
+            <span class="input-group-text">
+                <i class="fas fa-envelope"></i>
+            </span>
+        </div>
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          placeholder="Correo"
+          name="email"
+          autocomplete="off">
+        <span class="form-control-feedback"><i class="material-icons">done</i></span>
+    </div>
+    <div class="input-group" [class.has-success]="!form.controls.pass.errors && form.controls.pass.dirty">
+        <div class="input-group-prepend">
+            <span class="input-group-text">
+                <i class="fas fa-lock"></i>
+            </span>
+        </div>
+        <input
+          formControlName="pass"
+          type="password"
+          class="form-control"
+          placeholder="Contraseña"
+          name="pass" required>
+        <span class="form-control-feedback"><i class="material-icons">done</i></span>
+    </div>
+
+    <div class="text-right margin-bottom margin-top">
+      <a routerLink="/recovery" class="link">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <div *ngIf="errorRequest" class="alert alert-danger margin-top">
+        <div class="container">
+            <div class="alert-icon"><i class="fas fa-exclamation-circle"></i></div>
+            <span id="text-alert">{{errorRequest.message}}</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="text-center margin-bottom margin-top">
+          <button type="submit" class="btn btn-success" [disabled]="form.invalid">Iniciar</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,66 @@
+<div class="page-header header-filter back-img">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                <div class="card card-login">
+                    <div class="card-title ml-2"><a routerLink="/"><i class="fas fa-arrow-left fa-2x"></i></a></div>
+                    <h4 class="card-title text-center">Nueva contraseña</h4>
+                    <div class="card-body">
+                        <form [formGroup]="form" (ngSubmit)="SendRequest()">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                          <i class="far fa-lock-alt"></i>
+                                      </span>
+                                </div>
+                                <input
+                                  formControlName="pass1"
+                                  type="password"
+                                  class="form-control"
+                                  placeholder="Nueva Contraseña"
+                                  name="pass1"
+                                  autocomplete="off">
+                                <span class="form-control-feedback"><i class="material-icons">done</i></span>
+                            </div>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                          <i class="fas fa-lock-alt"></i>
+                                      </span>
+                                </div>
+                                <input
+                                    formControlName="pass2"
+                                    type="password"
+                                    class="form-control"
+                                    name="pass2"
+                                    placeholder="Repetir contraseña"
+                                    autocomplete="off">
+                                  <span class="form-control-feedback"><i class="material-icons">done</i></span>
+                            </div>
+
+                            <div class="margin-top float-right">
+                                <button class="btn btn-light btn-sm" type="submit"
+                                        [disabled]="!form.valid || form.value.pass1 != form.value.pass2">
+                                    Cambiar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div *ngIf="res" class="card-footer font-weight-bold">
+                      <div [ngClass]="{
+                        'text-success': res.Status(200),
+                        'text-danger': !res.Status(200)
+                      }">
+                        {{res.message}}
+                      </div>
+                    </div>
+
+                    <div class="card-footer align-self-center">
+                        <app-loading></app-loading>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

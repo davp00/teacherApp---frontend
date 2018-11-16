@@ -1,0 +1,40 @@
+<app-loading></app-loading>
+<div *ngIf="!loading.Visible()">
+  <app-navbar></app-navbar>
+  <div class="container">
+    <h3 class="title text-center">Grupos</h3>
+    <div class="">
+      <div class="row">
+        <div class="col-md-4 pl-5" *ngFor="let group of groups">
+          <div class="card group-list">
+            <h4 class="card-title text-center mb-2">{{group.name}}</h4>
+            <div class="card-body">
+              <div class="font-weight-bold">Grupo: {{group.number}}</div>
+            </div>
+            <div class="m-3">
+              <a routerLink="/group/{{group.code}}/table" class="link float-left">
+                Información
+              </a>
+              <div class="link float-right" [swal]="alert">
+                Nueva clase
+              </div>
+            </div>
+          </div>
+
+          <swal
+            #alert
+            title="Nueva Clase, Grupo {{group.number}}"
+            [options]="{ confirmButtonText: 'Crear', cancelButtonText:'Cancelar'}"
+            [showCancelButton]="true"
+            (confirm)="NewLesson(group.code)"
+          >
+            <form *swalPartial [formGroup]="form">
+              <input type="text" formControlName="title"  class="align-self-center form-control" placeholder="Ingrese el tema de la clase">
+            </form>
+          </swal>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

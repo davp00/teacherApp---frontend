@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+
+
+
+<div class="container ml-3" >
+
+    <app-loading class="align-self-center"></app-loading>
+
+    <table class="table" *ngIf="! loading.Visible()">
+        <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th>Nombre</th>
+                <th *ngFor="let lesson of lessons">{{lesson.title}}</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let student of students">
+                <th class="text-center">{{ student.code }}</th>
+                <th>{{ student.name }}</th>
+
+                <th *ngFor="let assisted of student.assistanceList">                  
+                    <span *ngIf="assisted; else not_assisted" class="text-center">
+                        <button class="btn btn-success btn-sm btn-round">
+                            <i class="fas fa-check"></i>
+                        </button>
+                    </span>
+                    <ng-template #not_assisted>
+                            <button class="btn btn-danger btn-sm btn-round">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </ng-template>
+                </th>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
+<app-footer></app-footer>

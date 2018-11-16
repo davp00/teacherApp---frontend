@@ -1,0 +1,49 @@
+<div class="page-header header-filter back-img">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                <div class="card card-login">
+                    <div class="card-title ml-2"><a routerLink="/"><i class="fas fa-arrow-left fa-1x"></i></a></div>
+                    <h4 class="card-title text-center">Cambiar contraseña</h4>
+                    <div class="card-body">
+                        <form [formGroup]="form" (ngSubmit)="SendRequest()" class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="fas fa-envelope"></i>
+                                  </span>
+                                </div>
+                                <input
+                                  formControlName="email"
+                                  type="email"
+                                  class="form-control"
+                                  placeholder="Correo"
+                                  name="email"
+                                  autocomplete="off">
+                                <span class="form-control-feedback"><i class="material-icons">done</i></span>
+                            </div>
+
+                            <div class="float-right margin-top margin-bottom">
+                                <button type="submit" class="btn btn-success btn-sm" [disabled]="!form.valid">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div *ngIf="request" class="card-footer">
+                        <div *ngIf="request.Status(200)" class="text-success">
+                            {{request.message}}
+                        </div>
+
+                      <div *ngIf="!request.Status(200)" class="text-danger">
+                          {{request.message}}
+                      </div>
+                    </div>
+
+                    <div class="card-footer align-self-center">
+                      <app-loading></app-loading>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

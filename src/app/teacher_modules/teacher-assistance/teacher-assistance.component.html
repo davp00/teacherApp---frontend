@@ -1,0 +1,45 @@
+<div>
+    <app-loading></app-loading>
+</div>
+<div *ngIf="!loading.Visible()">
+  <app-navbar></app-navbar>
+
+  <app-clock class="float-right mb-3"></app-clock>
+
+  <h3 class="title text-center m-5 margin-bottom">Tema: {{lesson.title}}</h3>
+
+  <div class="">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-6 pl-5 pr-5 " *ngFor="let student of students">
+        <div class="card card-profile student" (dblclick)="setAssisted(student)" [ngClass]="{'assisted': student.assisted}">
+          <div class="card-header card-avatar ">
+            <a class="#">
+              <img src="assets/img/user.png" class="img">
+            </a>
+          </div>
+          <div class="card-body">
+            <h6 class="card-title">{{student.name}}</h6>
+            <div class="card-category text-muted font-weight-bold">{{student.code}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="m-4">
+        <button class="btn btn-success" (click)="SendLessonData()" [disabled]="lesson.finish_date">
+            FINALIZAR CLASE
+        </button>
+    </div>
+
+    <swal
+      #succesAlert
+      title="La asistencia ha sido registrada con exito"
+      text=""
+      type="success"
+      (confirm)="setLocation()"
+      >
+    </swal>
+  </div>
+  <app-footer></app-footer>
+</div>
+
