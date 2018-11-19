@@ -90,6 +90,7 @@ export class UserService {
   public PageType(type: Number)
   {
       if (type == 1)this.router.navigate(['/teacher']); // Si es profesor
+      else if ( type == 2) this.router.navigate(['/profile']);
   }
 
 
