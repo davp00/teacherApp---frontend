@@ -11,9 +11,13 @@ import {TeacherGroupsComponent} from '../teacher_modules/teacher-groups/teacher-
 import {TeacherAssistanceComponent} from '../teacher_modules/teacher-assistance/teacher-assistance.component';
 import {InfoTableComponent} from '../teacher_modules/info-table/info-table.component';
 import {ProfileComponent} from '../components/profile/profile.component';
+import {StudentIndexComponent} from '../students_modules/student-index/student-index.component';
+import {FormExcuseComponent} from '../students_modules/form-excuse/form-excuse.component';
+import {StudentGroupInfoComponent} from '../students_modules/student-group-info/student-group-info.component';
 
 
 const appRoutes: Routes = [
+    // RUTAS DEL USUARIO
     { path:  '',
       component: LoginComponent},
 
@@ -25,7 +29,9 @@ const appRoutes: Routes = [
 
     { path:  'recovery/:token',
       component:RecoveryStep2Component},
+    ///
 
+    // RUTAS DEL PROFESOR
     { path:  'teacher',
       component: TeacherGroupsComponent},
 
@@ -33,7 +39,17 @@ const appRoutes: Routes = [
       component: TeacherAssistanceComponent},
 
     { path: 'group/:groupCode/table',
-      component: InfoTableComponent}
+      component: InfoTableComponent},
+    ///
+
+    // RUTAS DEL ESTUDIANTE
+    { path: 'student',
+      component: StudentIndexComponent},
+
+    { path: 'group/:groupCode',
+      component: StudentGroupInfoComponent},
+    { path: 'group/:groupCode/excuse',
+      component: FormExcuseComponent}
 ];
 
 @NgModule({

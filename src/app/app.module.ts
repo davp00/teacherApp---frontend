@@ -23,6 +23,9 @@ import { TeacherAssistanceComponent } from './teacher_modules/teacher-assistance
 import { ClockComponent } from './teacher_modules/clock/clock.component';
 import { InfoTableComponent } from './teacher_modules/info-table/info-table.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { StudentIndexComponent } from './students_modules/student-index/student-index.component';
+import { FormExcuseComponent } from './students_modules/form-excuse/form-excuse.component';
+import { StudentGroupInfoComponent } from './students_modules/student-group-info/student-group-info.component';
 
 
 @NgModule({
@@ -39,7 +42,10 @@ import { ProfileComponent } from './components/profile/profile.component';
     TeacherAssistanceComponent,
     ClockComponent,
     InfoTableComponent,
-    ProfileComponent
+    ProfileComponent,
+    StudentIndexComponent,
+    FormExcuseComponent,
+    StudentGroupInfoComponent,
   ],
   imports: [
     BrowserModule,

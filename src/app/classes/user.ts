@@ -3,6 +3,7 @@ export class User {
     public name: String;
     public type;
     public email: String;
+    public img_url: String;
 
     constructor()
     {

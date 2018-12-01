@@ -2,8 +2,22 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6 offset-md-3 card">
-            <div class="align-self-center avatar"> <img src="assets/img/user.png" class="rounded-circle img-fluid"></div>
+        <div class="col-md-6 offset-md-3 card" >
+            <div class="align-self-center fileinput fileinput-new text-center">
+                <div class="fileinput-new thumbnail mt-3">
+                    <img src="{{ userService.UrlImage(user.img_url) }}" class="img-raised rounded img-fluid" id="img-profile" alt="LA IMAGEN  NO FUE ENCONTRADA">
+                </div>
+                <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+                <div class="btn_file_cursor">
+                      <form [formGroup]="formPhoto" enctype="multipart/form-data">
+                          <span class="btn btn-raised btn-round btn-success btn-file btn-sm">
+                              <span class="fileinput-new">Select image</span>
+                              <span class="fileinput-exists">Change</span>
+                              <input type="file" (change)="UploadPhoto($event)" name="photo" accept="image/x-png,image/gif,image/jpeg" formControlName="photo"/>
+                          </span>
+                      </form>
+                </div>
+            </div>
             <div class="">
                 <div class="col-md-8 offset-md-2">
                     <div class="">

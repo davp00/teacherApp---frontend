@@ -14,7 +14,7 @@
         <div class="card card-profile student" (dblclick)="setAssisted(student)" [ngClass]="{'assisted': student.assisted}">
           <div class="card-header card-avatar ">
             <a class="#">
-              <img src="assets/img/user.png" class="img">
+              <img src="{{ userService.UrlImage(student.img_url) }}" class="img">
             </a>
           </div>
           <div class="card-body">

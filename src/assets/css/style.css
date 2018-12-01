@@ -247,6 +247,11 @@ input[type=submit] {
     text-decoration: underline;
 }
 
+.btn_file_cursor:hover
+{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 800px) {
     body
     {

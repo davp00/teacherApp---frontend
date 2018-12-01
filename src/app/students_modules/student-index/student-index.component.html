@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div>
+        <app-loading></app-loading>
+        <h4 class="title text-center">Grupos</h4>
+        <div class="mt-4 row">
+            <div class="col-md-4 pl-lg-5" *ngFor="let group of groups">
+                <div class="card group-list">
+                    <div class="card-title text-center mb-2">{{ group.subject.name }}</div>
+                    <div class="card-body">
+                        <div class="mt-2"><span class="font-weight-bold">Profesor:</span> {{ group.teacher.name }}</div>
+                        <div class="mt-2"><span class="font-weight-bold">Numero:</span> {{ group.number }}</div>
+                        <div class="">
+                          <div class="title text-center">Acciones</div>
+                          <div class="">
+                            <div class="p-1"><a routerLink="/group/{{group.code}}" class="link">Ver información</a></div>
+                            <div class="p-1"><a routerLink="/group/{{ group.code }}/excuse" class="link">Enviar excusa</a></div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

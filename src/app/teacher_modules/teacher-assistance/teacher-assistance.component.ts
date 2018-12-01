@@ -5,6 +5,8 @@ import {TeacherService} from '../services/teacher.service';
 import {LoadingSpinerService} from '../../services/loading-spiner.service';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
 import {Lesson} from '../../classes/lesson';
+import {FrontendConfig} from '../../frontend-config';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-teacher-assistance',
@@ -19,9 +21,10 @@ export class TeacherAssistanceComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private teacherService: TeacherService,
+    public teacherService: TeacherService,
+    public userService: UserService,
     public loading: LoadingSpinerService,
-    public router: Router
+    public router: Router,
   )
   {
       loading.Show();

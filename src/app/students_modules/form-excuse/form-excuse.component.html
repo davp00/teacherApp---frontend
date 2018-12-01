@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<div class="container card">
+    <h4 class="card-title text-center">Enviar excusa</h4>
+    <div class="p-2">
+        <form class="container" [formGroup]="form" (ngSubmit)="Send()" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="select_clase">Seleccione la clase: </label>
+                <select class="selectpicker" formControlName="lesson" data-style="btn btn-link" id="select_clase">
+                    <option value="0" selected>Seleccionar</option>
+                    <option *ngFor="let lesson of lessons" value="{{lesson.code}}">
+                        {{lesson.title}} - Fecha: {{ lesson.finish_date | date:'dd/MM/yyyy' }}
+                    </option>
+                </select>
+              <div class="form-group form-file-upload form-file-multiple" (click)="file.click()">
+                <input #file accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf"
+                       formControlName="file" (change)="SelectedFile($event)" name="fileExcuse" type="file" class="inputFileHidden">
+                <div class="input-group">
+                  <input type="text" class="form-control inputFileVisible" placeholder="{{ (form.value.file)? parseFile(form.value.file): 'Seleccione el archivo de su excusa.'  }}">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-fab btn-round btn-success" >
+                        <i class="material-icons">attach_file</i>
+                    </button>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="message">Mensaje</label>
+                  <textarea class="form-control" formControlName="message" id="message" rows="3"></textarea>
+              </div>
+
+              <div class="form-group">
+                  <button type="submit" class="mt-4 btn btn-sm btn-success" [disabled]="!form.valid">Enviar</button>
+              </div>
+
+              <app-loading class="align-self-center"></app-loading>
+              <div class="form-group mt-4" *ngIf="requestInfo">
+                <div class="container alert alert-info">
+                  <div class="alert-icon"><i class="fas fa-exclamation-circle"></i></div>
+                  <span id="text-alert">{{requestInfo.message}}</span>
+                </div>
+              </div>
+            </div>
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>

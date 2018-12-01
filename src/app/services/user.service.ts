@@ -10,7 +10,8 @@ import {FrontendConfig} from '../frontend-config';
 })
 export class UserService {
 
-  readonly APIUSERS = FrontendConfig.URL_BACKEND+'/api/users';
+  readonly APIUSERS     = FrontendConfig.URL_BACKEND + '/api/users';
+  readonly IMAGES       = FrontendConfig.URL_BACKEND + '/images/';
   public user: User = undefined;
 
   constructor(
@@ -18,6 +19,12 @@ export class UserService {
     private http: HttpClient,
     private router:Router
   ) {
+  }
+
+  public UrlImage(url_image: String)
+  {
+    if(!url_image)url_image = 'user.png';
+    return this.IMAGES + url_image;
   }
 
   public LoginRequest(email: String, pass: String)
@@ -90,7 +97,7 @@ export class UserService {
   public PageType(type: Number)
   {
       if (type == 1)this.router.navigate(['/teacher']); // Si es profesor
-      else if ( type == 2) this.router.navigate(['/profile']);
+      else if ( type == 2) this.router.navigate(['/student']);
   }
 
 
@@ -106,5 +113,12 @@ export class UserService {
   {
       this.user = undefined;
       localStorage.clear();
+  }
+
+  public APIPhoto(data)
+  {
+      return this.http.post(this.APIUSERS+'/photo',data, {
+        headers: UserService.RequestOptions(this.getUser().getToken()).delete('Content-Type')
+      });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {LoadingSpinerService} from '../../services/loading-spiner.service';
@@ -13,6 +13,7 @@ import {User} from '../../classes/user';
 export class ProfileComponent implements OnInit {
 
   public form: FormGroup;
+  public formPhoto: FormGroup;
   public request: RequestInformation = undefined;
   public user: User = new User();
 
@@ -20,6 +21,7 @@ export class ProfileComponent implements OnInit {
     public userService: UserService,
     private fb: FormBuilder,
     private loading: LoadingSpinerService,
+    private cd: ChangeDetectorRef
   ) {
     this.form = this.fb.group(
       {
@@ -27,6 +29,10 @@ export class ProfileComponent implements OnInit {
         pass2:['', Validators.required]
       }
     );
+
+    this.formPhoto = this.fb.group({
+        photo: ''
+    });
   }
 
   ngOnInit() {
@@ -56,6 +62,27 @@ export class ProfileComponent implements OnInit {
           this.loading.Hide();
         }
       );
+  }
+
+  public UploadPhoto(event) : void
+  {
+      if (this.formPhoto.value.photo)
+      {
+          const [photo] = event.target.files,
+                fd      = new FormData();
+          fd.append('photo', photo);
+          this.userService.APIPhoto(fd).subscribe(
+            (res:any) =>
+            {
+                this.user.img_url = res.img_url;
+            }
+            ,
+            (err) =>
+            {
+
+            }
+          );
+      }
   }
 
 }
