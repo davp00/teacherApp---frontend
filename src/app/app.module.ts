@@ -26,6 +26,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { StudentIndexComponent } from './students_modules/student-index/student-index.component';
 import { FormExcuseComponent } from './students_modules/form-excuse/form-excuse.component';
 import { StudentGroupInfoComponent } from './students_modules/student-group-info/student-group-info.component';
+import { ActivityChatComponent } from './activity-modules/activity-chat/activity-chat.component';
+import { StudentActivitiesComponent } from './students_modules/student-activities/student-activities.component';
 
 
 @NgModule({
@@ -46,6 +48,8 @@ import { StudentGroupInfoComponent } from './students_modules/student-group-info
     StudentIndexComponent,
     FormExcuseComponent,
     StudentGroupInfoComponent,
+    ActivityChatComponent,
+    StudentActivitiesComponent,
   ],
   imports: [
     BrowserModule,

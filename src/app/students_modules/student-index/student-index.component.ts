@@ -16,7 +16,10 @@ export class StudentIndexComponent implements OnInit {
     private studentService: StudentService,
     public  loadingService: LoadingSpinerService,
 
-  ) { }
+  ) {
+
+    document.title = "Grupos - Estudiante"
+  }
 
   ngOnInit() {
       this.loadingService.Show();

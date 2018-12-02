@@ -14,6 +14,7 @@ import {ProfileComponent} from '../components/profile/profile.component';
 import {StudentIndexComponent} from '../students_modules/student-index/student-index.component';
 import {FormExcuseComponent} from '../students_modules/form-excuse/form-excuse.component';
 import {StudentGroupInfoComponent} from '../students_modules/student-group-info/student-group-info.component';
+import {StudentActivitiesComponent} from '../students_modules/student-activities/student-activities.component';
 
 
 const appRoutes: Routes = [
@@ -46,8 +47,8 @@ const appRoutes: Routes = [
     { path: 'student',
       component: StudentIndexComponent},
 
-    { path: 'group/:groupCode',
-      component: StudentGroupInfoComponent},
+    { path: 'group/:groupCode/activities',
+      component: StudentActivitiesComponent},
     { path: 'group/:groupCode/excuse',
       component: FormExcuseComponent}
 ];

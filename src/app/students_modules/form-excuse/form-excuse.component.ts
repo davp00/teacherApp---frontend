@@ -13,7 +13,7 @@ import {RequestInformation} from '../../classes/request-information';
 })
 export class FormExcuseComponent implements OnInit {
 
-  public lessons:Array<Lesson> = [];
+  public lessons:Array<Lesson>;
   public form:FormGroup;
   public formData:FormData = new FormData();
   public requestInfo:RequestInformation = undefined;
@@ -25,7 +25,7 @@ export class FormExcuseComponent implements OnInit {
     public loadingService:LoadingSpinerService
   ) {
     this.form = fb.group({
-        lesson  :['0',Validators.required],
+        lesson  :[0,Validators.required],
         message : [''],
         file    : ['', Validators.required]
     });

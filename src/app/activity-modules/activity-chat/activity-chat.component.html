@@ -1,0 +1,42 @@
+<app-loading></app-loading>
+<div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
+  <div class="card card-plain" *ngFor="let activity of activities">
+    <div class="card-header p-3"  role="tab" id="heading{{ activity.code }}">
+      <a data-toggle="collapse" (click)="ShowActivity(activity)" data-parent="#accordion" href="#{{ activity.code }}" aria-expanded="false">
+        {{ activity.title }}
+        <i class="material-icons">keyboard_arrow_down</i>
+      </a>
+    </div>
+    <div id="{{ activity.code }}" class="card-body" role="tabpanel" *ngIf="activity.show">
+      <div class="chat" >
+          <div class="media">
+            <a class="float-left" href="#pablo">
+              <div class="avatar">
+                <img class="media-object" alt="64x64" src="assets/img/user.png">
+              </div>
+            </a>
+            <div class="media-body">
+              <h5 class="media media-heading">NOMBRE DE EL USUARIO <small class="ml-3">FECHA DEL MENSAJE</small></h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid amet asperiores commodi consequuntur dolore dolorem doloribus, expedita illum in ipsum nesciunt nobis nostrum nulla odio perspiciatis quas quibusdam, reiciendis reprehenderit! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores aut beatae commodi ea eveniet ex incidunt, laborum nemo ratione recusandae rem, repudiandae sapiente sed unde voluptates voluptatum! Quo, sit.
+              </p>
+              <hr>
+            </div>
+          </div>
+      </div>
+      <div class="row p-3">
+        <div class="col-md-10 offset-md-1">
+            <textarea class="form-control" [(ngModel)]="activity.message" placeholder="Ingresa tu mensaje"></textarea>
+
+        </div>
+        <div class="col-md-1">
+          <button type="button" class="btn btn-fab btn-round btn-info" [disabled]="!(''!==activity.message)" (click)="SendMessage(activity)" >
+            <i class="material-icons">send</i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -5,13 +5,13 @@
         <form class="container" [formGroup]="form" (ngSubmit)="Send()" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="select_clase">Seleccione la clase: </label>
-                <select class="selectpicker" formControlName="lesson" data-style="btn btn-link" id="select_clase">
-                    <option value="0" selected>Seleccionar</option>
-                    <option *ngFor="let lesson of lessons" value="{{lesson.code}}">
+                <select class="form-control" formControlName="lesson" name="lesson" data-style="btn btn-success" id="select_clase">
+                    <option [value]="0">Seleccionar</option>
+                    <option *ngFor="let lesson of lessons" [value]="lesson.code">
                         {{lesson.title}} - Fecha: {{ lesson.finish_date | date:'dd/MM/yyyy' }}
                     </option>
                 </select>
-              <div class="form-group form-file-upload form-file-multiple" (click)="file.click()">
+              <div class="form-group form-file-upload form-file-multiple mt-4" (click)="file.click()">
                 <input #file accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf"
                        formControlName="file" (change)="SelectedFile($event)" name="fileExcuse" type="file" class="inputFileHidden">
                 <div class="input-group">
