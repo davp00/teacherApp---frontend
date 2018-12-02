@@ -8,17 +8,17 @@
       </a>
     </div>
     <div id="{{ activity.code }}" class="card-body" role="tabpanel" *ngIf="activity.show">
-      <div class="chat" >
-          <div class="media">
-            <a class="float-left" href="#pablo">
+      <div class="chat" #chat [scrollTop]="chat.scrollHeight">
+          <div class="media" *ngFor="let comment of activity.comments">
+            <a class="float-left">
               <div class="avatar">
-                <img class="media-object" alt="64x64" src="assets/img/user.png">
+                <img class="media-object" alt="64x64" src="{{ userService.UrlImage(comment.user.img_url) }}">
               </div>
             </a>
             <div class="media-body">
-              <h5 class="media media-heading">NOMBRE DE EL USUARIO <small class="ml-3">FECHA DEL MENSAJE</small></h5>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid amet asperiores commodi consequuntur dolore dolorem doloribus, expedita illum in ipsum nesciunt nobis nostrum nulla odio perspiciatis quas quibusdam, reiciendis reprehenderit! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores aut beatae commodi ea eveniet ex incidunt, laborum nemo ratione recusandae rem, repudiandae sapiente sed unde voluptates voluptatum! Quo, sit.
+              <h6 class="media media-heading">{{ comment.user.name }} <span class="text-muted ml-3">{{ comment.data.date | date: "hh:mm:ss - dd/MM/yy" }}</span></h6>
+              <p class="text-dark">
+                {{ comment.data.message }}
               </p>
               <hr>
             </div>

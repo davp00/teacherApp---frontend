@@ -8,5 +8,4 @@ export class Activity {
     public message:String = "";
 
 
-
 }

@@ -29,6 +29,13 @@ import { StudentGroupInfoComponent } from './students_modules/student-group-info
 import { ActivityChatComponent } from './activity-modules/activity-chat/activity-chat.component';
 import { StudentActivitiesComponent } from './students_modules/student-activities/student-activities.component';
 
+// SOCKETS
+import  {SocketIoModule , SocketIoConfig} from 'ngx-socket-io';
+import {FrontendConfig} from './frontend-config';
+import {TimeAgoPipe} from 'time-ago-pipe'
+
+const socketConfig:SocketIoConfig = { url: FrontendConfig.URL_BACKEND, options: {}};
+
 
 @NgModule({
   declarations: [
@@ -50,6 +57,7 @@ import { StudentActivitiesComponent } from './students_modules/student-activitie
     StudentGroupInfoComponent,
     ActivityChatComponent,
     StudentActivitiesComponent,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule,
@@ -62,7 +70,8 @@ import { StudentActivitiesComponent } from './students_modules/student-activitie
       buttonsStyling: false,
       confirmButtonClass: 'btn btn-success btn-sm',
       cancelButtonClass: 'btn btn-danger btn-sm'
-    })
+    }),
+    SocketIoModule.forRoot(socketConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]
